@@ -2086,3 +2086,7 @@ end
 let x = big(-0.0)
     @test signbit(x) && !signbit(abs(x))
 end
+
+#Issue #5570
+@test map(x -> int(mod1(uint(x),uint(5))), 0:15) == [5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+
