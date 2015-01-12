@@ -59,5 +59,7 @@ script:
       fi
     - cd .. && mv julia julia2
     - cd /tmp/julia/share/julia/test && /tmp/julia/bin/julia-debug --check-bounds=yes runtests.jl all && /tmp/julia/bin/julia-debug --check-bounds=yes runtests.jl pkg
+    - rm /tmp/julia/lib/julia/sys.so
+    - /tmp/julia/bin/julia-debug -e 'using Base.Test; @test true'
     - cd - && mv julia2 julia
     - echo "Ready for packaging..."
